@@ -29,3 +29,16 @@ export const getBlog = async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Error getting users', error });
   }
 };                                                                                                                                                                        
+
+export const deleteBlog = async (req: Request, res: Response) => {
+  try {
+    const users = await Blog.deleteOne(
+      {
+        _id : req.query.id
+      }
+    );
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: 'Error getting users', error });
+  }
+};                                                                                                                                                                        
